@@ -1,20 +1,17 @@
-name: App CI
+name: Build
 on: 
-  pull_request:
+  push:
     branches:
       - develop
+  pull_request:
+    types: [opened, synchronize, reopened]
 jobs:
-  run-ci:
+  sonarcloud:
+    name: SonarCloud
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      - run: npm install
-      - run: npm run build --if-present
-      - run: npm test 
-
+      
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
