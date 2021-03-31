@@ -5,7 +5,7 @@ on:
       - develop
 jobs:
   run-ci:
-    name: Node
+    name: Node 14
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
